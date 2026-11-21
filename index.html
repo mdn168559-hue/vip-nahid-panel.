@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090909">
+<title>VIP NAHID PANEL</title>
+<style>
+:root{--bg:#090909;--panel:#15130f;--panel2:#1d1910;--gold:#f5c542;--gold2:#bd861d;--line:#51401e;--muted:#aaa18c;--green:#35c979;--red:#e65b5b}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#241b0b 0,#090909 52%);color:#f8f3e8;font-family:Arial,sans-serif}button,input,textarea{font:inherit}button{cursor:pointer}.hidden{display:none!important}
+.auth-wrap{min-height:100vh;display:grid;place-items:center;padding:20px}.auth-card{width:100%;max-width:430px;background:linear-gradient(145deg,#1b1811,#100f0d);border:1px solid var(--line);border-radius:20px;padding:26px;box-shadow:0 18px 60px #000b}
+.brand{text-align:center;margin-bottom:24px}.brand .crown{font-size:42px}.brand h1{margin:8px 0;color:var(--gold);font-size:34px;letter-spacing:3px}.brand p{margin:0;color:var(--muted);font-size:11px;letter-spacing:3px}
+.tabs{display:flex;gap:8px;margin-bottom:20px}.tabs button,.secondary{flex:1;padding:12px;border-radius:9px;border:1px solid var(--line);background:#090909;color:#eee}.tabs button.active{background:linear-gradient(120deg,#ffe18a,#bd861d);color:#1b1304;font-weight:bold}
+h2,h3{color:var(--gold)}h2{margin:0 0 9px}label{display:block;color:#ded4bd;font-size:13px;margin:14px 0 7px}
+input,textarea{width:100%;padding:13px;border-radius:9px;border:1px solid #514326;background:#090909;color:#fff;outline:none}input:focus,textarea:focus{border-color:var(--gold)}
+.primary{width:100%;padding:14px;margin-top:18px;border:0;border-radius:9px;background:linear-gradient(120deg,#ffe18a,#bd861d);color:#171006;font-weight:800}
+.message{font-size:13px;color:var(--gold);line-height:1.5;margin-top:13px;min-height:16px}.hint{font-size:12px;color:var(--muted);line-height:1.55;margin-top:15px}
+.layout{min-height:100vh}.sidebar{position:fixed;inset:0 auto 0 0;width:250px;background:#11100d;border-right:1px solid var(--line);padding:18px 13px;overflow:auto;z-index:10;transition:transform .25s}
+.side-brand{text-align:center;padding:10px 0 24px}.side-brand h2{letter-spacing:2px;margin:6px 0}.side-brand small{color:var(--muted);letter-spacing:2px}
+.nav-label{font-size:10px;letter-spacing:2px;color:#8f8060;padding:13px 11px 7px}.nav-btn{width:100%;display:flex;gap:12px;align-items:center;text-align:left;padding:13px 12px;margin:3px 0;border:0;border-radius:9px;background:transparent;color:#e8e0d0}.nav-btn:hover,.nav-btn.active{background:#30240e;color:var(--gold)}.nav-btn .ico{width:23px;font-size:18px}
+.main{margin-left:250px;padding:20px;min-height:100vh}.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 17px;margin-bottom:23px;background:#15130f;border:1px solid var(--line);border-radius:12px}.topbar strong{color:var(--gold);letter-spacing:1px}.top-right{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:12px}.menu-toggle{display:none;background:#30240e;color:var(--gold);border:1px solid var(--line);padding:9px 12px;border-radius:8px}
+.page{display:none}.page.active{display:block}.page-title{margin:0 0 7px}.subtitle{color:var(--muted);font-size:13px;margin:0 0 20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:13px}.widget{background:linear-gradient(145deg,#1b1811,#111);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:14px}.widget small{color:var(--muted)}.stat{font-size:27px;color:var(--gold);font-weight:bold;margin-top:10px}.widget p{font-size:13px;color:#d0c7b5;line-height:1.6}
+.status{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:30px;font-size:11px;font-weight:bold}.status.active{background:#123b28;color:#73e6a7}.status.inactive{background:#421c1c;color:#ff9b9b}.dot{width:7px;height:7px;border-radius:50%;background:currentColor}
+.action{padding:9px 12px;border-radius:8px;border:1px solid var(--line);background:#30240e;color:var(--gold);font-size:12px}.action.danger{color:#ffaaaa;border-color:#713535;background:#321818}.action.good{color:#8bf0b4;border-color:#286a46;background:#123322}
+.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:490px}th,td{text-align:left;padding:12px 10px;border-bottom:1px solid #3a301d;font-size:12px}th{color:var(--gold)}td{color:#e4ddcf}
+.post{padding:16px;border:1px solid var(--line);border-radius:12px;background:#15130f;margin:10px 0}.post h3{margin:0 0 8px}.post small{color:var(--muted)}.post p{white-space:pre-wrap;color:#ddd4c3;line-height:1.5;font-size:13px}
+.empty{padding:18px;text-align:center;color:var(--muted)}.footer{text-align:center;color:#766e5d;font-size:11px;margin:30px 0 12px}
+@media(max-width:760px){.sidebar{transform:translateX(-105%)}.sidebar.open{transform:translateX(0)}.main{margin-left:0;padding:12px}.menu-toggle{display:block}.topbar{padding:12px}.topbar strong{font-size:13px}}
+</style>
+</head>
+<body>
+<section id="authScreen" class="auth-wrap">
+ <div class="auth-card">
+  <div class="brand"><div class="crown">👑</div><h1>VIP NAHID</h1><p>PREMIUM CONTROL PANEL</p></div>
+  <div id="firstSetup" class="hidden">
+   <h2>Moderator Setup</h2><p class="hint">Create a separate moderator password. Keep it private.</p>
+   <label>New moderator password</label><input id="setupPass" type="password" minlength="8" placeholder="At least 8 characters">
+   <label>Confirm moderator password</label><input id="setupConfirm" type="password" minlength="8" placeholder="Confirm password">
+   <button class="primary" onclick="setupModerator()">SET MODERATOR PASSWORD</button>
+   <div id="setupMsg" class="message"></div>
+  </div>
+  <div id="authArea">
+   <div class="tabs"><button id="loginTab" class="active" onclick="showAuth('login')">LOGIN</button><button id="registerTab" onclick="showAuth('register')">REGISTER</button></div>
+   <div id="loginForm"><h2>Welcome Back</h2>
+    <label>Mobile Number</label><input id="loginPhone" type="tel" autocomplete="tel" placeholder="+8801XXXXXXXXX">
+    <label>Password</label><input id="loginPassword" type="password" autocomplete="current-password" placeholder="Your password">
+    <button class="primary" onclick="login()">LOGIN TO PANEL</button>
+   </div>
+   <div id="registerForm" class="hidden"><h2>Create Account</h2>
+    <label>Full Name</label><input id="regName" autocomplete="name" placeholder="Your full name">
+    <label>Mobile Number</label><input id="regPhone" type="tel" autocomplete="tel" placeholder="+8801XXXXXXXXX">
+    <label>Password</label><input id="regPassword" type="password" autocomplete="new-password" placeholder="At least 8 characters">
+    <button class="primary" onclick="register()">CREATE ACCOUNT</button>
+   </div>
+   <div id="authMsg" class="message"></div>
+   <button class="secondary" style="width:100%;margin-top:12px" onclick="showModeratorLogin()">MODERATOR LOGIN</button>
+  </div>
+  <div id="moderatorLogin" class="hidden"><h2>Moderator Login</h2><p class="hint">Enter your separate moderator password.</p>
+   <label>Moderator Password</label><input id="modLoginPass" type="password" placeholder="Moderator password">
+   <button class="primary" onclick="moderatorLogin()">UNLOCK MODERATOR PANEL</button>
+   <button class="secondary" style="width:100%;margin-top:10px" onclick="backToAuth()">BACK</button>
+   <div id="modLoginMsg" class="message"></div>
+  </div>
+ </div>
+</section>
+
+<section id="app" class="layout hidden">
+ <aside id="sidebar" class="sidebar">
+  <div class="side-brand"><div style="font-size:34px">👑</div><h2>VIP NAHID</h2><small>CONTROL CENTER</small></div>
+  <div class="nav-label">MAIN MENU</div>
+  <button class="nav-btn active" data-page="dashboard" onclick="openPage('dashboard',this)"><span class="ico">🏠</span>Dashboard</button>
+  <button class="nav-btn" data-page="profile" onclick="openPage('profile',this)"><span class="ico">👤</span>My Profile</button>
+  <button class="nav-btn" data-page="members" onclick="openPage('members',this)"><span class="ico">👥</span>Members</button>
+  <button class="nav-btn" data-page="activity" onclick="openPage('activity',this)"><span class="ico">📊</span>Login Activity</button>
+  <div class="nav-label">CONTENT</div>
+  <button class="nav-btn" data-page="posts" onclick="openPage('posts',this)"><span class="ico">📝</span>All Posts</button>
+  <button class="nav-btn" data-page="createPost" onclick="openPage('createPost',this)"><span class="ico">➕</span>Create Post</button>
+  <button class="nav-btn" data-page="notifications" onclick="openPage('notifications',this)"><span class="ico">🔔</span>Notifications</button>
+  <div class="nav-label">MODERATOR</div>
+  <button class="nav-btn" id="moderatorNav" data-page="moderator" onclick="openPage('moderator',this)"><span class="ico">🛡️</span>Moderator Panel</button>
+  <button class="nav-btn" onclick="logout()"><span class="ico">🚪</span>Logout</button>
+ </aside>
+ <main class="main">
+  <header class="topbar"><div style="display:flex;align-items:center;gap:12px"><button class="menu-toggle" onclick="toggleMenu()">☰</button><strong>VIP NAHID PANEL</strong></div><div class="top-right"><span id="currentUser">Member</span><span id="topRole" class="status active">● MEMBER</span></div></header>
+  <section id="dashboard" class="page active"><h2 class="page-title">Dashboard</h2><p class="subtitle">Welcome to your control center.</p>
+   <div class="grid"><div class="widget"><small>TOTAL MEMBERS</small><div class="stat" id="statMembers">0</div></div><div class="widget"><small>LOGIN RECORDS</small><div class="stat" id="statLogins">0</div></div><div class="widget"><small>TOTAL POSTS</small><div class="stat" id="statPosts">0</div></div><div class="widget"><small>ACTIVE MEMBERS</small><div class="stat" id="statActive">0</div></div></div>
+   <div class="widget"><h3>👑 Welcome to VIP NAHID</h3><p>Use the sidebar to explore your panel, profile, posts and updates.</p></div><div class="widget"><h3>Latest Posts</h3><div id="latestPosts"></div></div>
+  </section>
+  <section id="profile" class="page"><h2 class="page-title">My Profile</h2><p class="subtitle">Your account information.</p><div class="widget" id="profileInfo"></div></section>
+  <section id="members" class="page"><h2 class="page-title">Members</h2><p class="subtitle">Member directory and account status.</p><div class="widget table-wrap"><table><thead><tr><th>Name</th><th>Mobile</th><th>Status</th></tr></thead><tbody id="memberRows"></tbody></table></div></section>
+  <section id="activity" class="page"><h2 class="page-title">Login Activity</h2><p class="subtitle">Recent sign-in records in this browser.</p><div class="widget table-wrap"><table><thead><tr><th>Name</th><th>Mobile</th><th>Time</th></tr></thead><tbody id="activityRows"></tbody></table></div></section>
+  <section id="posts" class="page"><h2 class="page-title">All Posts</h2><p class="subtitle">Announcements and updates.</p><div id="allPosts"></div></section>
+  <section id="createPost" class="page"><h2 class="page-title">Create Post</h2><p class="subtitle">Publish an announcement for members.</p><div class="widget"><label>Post Title</label><input id="postTitle" placeholder="Enter title"><label>Post Content</label><textarea id="postContent" rows="6" placeholder="Write your announcement..."></textarea><button class="primary" onclick="publishPost()">PUBLISH POST</button><div id="postMsg" class="message"></div></div></section>
+  <section id="notifications" class="page"><h2 class="page-title">Notifications</h2><p class="subtitle">Panel updates.</p><div class="widget"><p>Welcome to VIP NAHID PANEL.</p><p>Check the Posts section for announcements.</p></div></section>
+  <section id="moderator" class="page"><h2 class="page-title">🛡️ Moderator Control</h2><p class="subtitle">Manage member status, posts and moderator password.</p>
+   <div class="grid"><div class="widget"><small>REGISTERED MEMBERS</small><div class="stat" id="modMembers">0</div></div><div class="widget"><small>LOGIN RECORDS</small><div class="stat" id="modLogins">0</div></div><div class="widget"><small>POSTS</small><div class="stat" id="modPostCount">0</div></div></div>
+   <div class="widget table-wrap"><h3>Member Access Control</h3><p>Set each member to Active or Inactive. Inactive members cannot sign in.</p><table><thead><tr><th>Name</th><th>Mobile</th><th>Status</th><th>Action</th></tr></thead><tbody id="manageMembers"></tbody></table></div>
+   <div class="widget table-wrap"><h3>Login Records</h3><table><thead><tr><th>Name</th><th>Mobile</th><th>Time</th></tr></thead><tbody id="modActivity"></tbody></table></div>
+   <div class="widget"><h3>Change Moderator Password</h3><label>Current moderator password</label><input id="oldModPass" type="password"><label>New moderator password</label><input id="newModPass" type="password"><label>Confirm new password</label><input id="confirmModPass" type="password"><button class="primary" onclick="changeModeratorPassword()">CHANGE PASSWORD</button><div id="changePassMsg" class="message"></div></div>
+   <div class="widget"><h3>Post Management</h3><div id="managePosts"></div></div>
+  </section>
+  <div class="footer">VIP NAHID • PREMIUM CONTROL PANEL</div>
+ </main>
+</section>
+
+<script>
+const K={users:"vnp_users_v1",logs:"vnp_logs_v1",posts:"vnp_posts_v1",mod:"vnp_mod_hash_v1",session:"vnp_session_v1"};
+const read=k=>{try{return JSON.parse(localStorage.getItem(k)||"[]")}catch{return []}};
+const write=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
+const session=()=>{try{return JSON.parse(sessionStorage.getItem(K.session)||"null")}catch{return null}};
+const $=id=>document.getElementById(id);
+const hash=async s=>{const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(s));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("")};
+const phoneOK=p=>/^\+?[0-9\s()-]{8,18}$/.test(p);
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function statusTag(active){return `<span class="status ${active?"active":"inactive"}"><i class="dot"></i>${active?"ACTIVE":"INACTIVE"}</span>`}
+function init(){if(!localStorage.getItem(K.mod)){$("firstSetup").classList.remove("hidden");$("authArea").classList.add("hidden")}if(session())openApp()}
+async function setupModerator(){const a=$("setupPass").value,b=$("setupConfirm").value;if(a.length<8||a!==b){$("setupMsg").textContent="Passwords must match and contain at least 8 characters.";return}localStorage.setItem(K.mod,await hash(a));$("setupMsg").textContent="Moderator password created. Please sign in.";setTimeout(()=>{ $("firstSetup").classList.add("hidden");$("authArea").classList.remove("hidden")},700)}
+function showAuth(t){$("loginForm").classList.toggle("hidden",t!=="login");$("registerForm").classList.toggle("hidden",t!=="register");$("loginTab").classList.toggle("active",t==="login");$("registerTab").classList.toggle("active",t==="register");$("authMsg").textContent=""}
+async function register(){const name=$("regName").value.trim(),phone=$("regPhone").value.trim(),pass=$("regPassword").value;if(!name||!phoneOK(phone)||pass.length<8){$("authMsg").textContent="Enter a name, valid phone number and password (8+ characters).";return}const users=read(K.users);if(users.some(u=>u.phone===phone)){$("authMsg").textContent="This mobile number is already registered.";return}users.push({id:crypto.randomUUID(),name,phone,passHash:await hash(pass),active:true,created:new Date().toISOString()});write(K.users,users);$("authMsg").textContent="Account created. You can now login.";showAuth("login");$("loginPhone").value=phone}
+async function login(){return doLogin()}
+async function doLogin(){const phone=$("loginPhone").value.trim(),pass=$("loginPassword").value;if(!phoneOK(phone)||!pass){$("authMsg").textContent="Enter your mobile number and password.";return}const h=await hash(pass),users=read(K.users),u=users.find(x=>x.phone===phone&&x.passHash===h);if(!u){$("authMsg").textContent="Mobile number or password is incorrect.";return}if(!u.active){$("authMsg").textContent="Your account is inactive. Contact the moderator.";return}sessionStorage.setItem(K.session,JSON.stringify({id:u.id,name:u.name,phone:u.phone,role:"Member"}));const logs=read(K.logs);logs.unshift({name:u.name,phone:u.phone,time:new Date().toLocaleString()});write(K.logs,logs.slice(0,200));openApp()}
+async function moderatorLogin(){const p=$("modLoginPass").value;if(!p){$("modLoginMsg").textContent="Enter moderator password.";return}if(await hash(p)!==localStorage.getItem(K.mod)){$("modLoginMsg").textContent="Incorrect moderator password.";return}sessionStorage.setItem(K.session,JSON.stringify({id:"moderator",name:"Moderator",phone:"",role:"Moderator"}));openApp()}
+function showModeratorLogin(){$("authArea").classList.add("hidden");$("moderatorLogin").classList.remove("hidden")}
+function backToAuth(){$("moderatorLogin").classList.add("hidden");$("authArea").classList.remove("hidden")}
+function openApp(){const s=session();if(!s)return;$("authScreen").classList.add("hidden");$("app").classList.remove("hidden");$("currentUser").textContent=s.name;$("topRole").textContent=s.role.toUpperCase();$("moderatorNav").classList.toggle("hidden",s.role!=="Moderator");if(s.role!=="Moderator"){$("moderator").classList.remove("active");}refresh()}
+function logout(){sessionStorage.removeItem(K.session);$("app").classList.add("hidden");$("authScreen").classList.remove("hidden");$("sidebar").classList.remove("open")}
+function openPage(id,btn){const s=session();if(id==="moderator"&&s?.role!=="Moderator")return;document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));$(id).classList.add("active");document.querySelectorAll(".nav-btn").forEach(b=>b.classList.remove("active"));if(btn)btn.classList.add("active");$("sidebar").classList.remove("open");refresh()}
+function toggleMenu(){$("sidebar").classList.toggle("open")}
+async function changeModeratorPassword(){const old=$("oldModPass").value,n=$("newModPass").value,c=$("confirmModPass").value;if(await hash(old)!==localStorage.getItem(K.mod)){$("changePassMsg").textContent="Current password is incorrect.";return}if(n.length<8||n!==c){$("changePassMsg").textContent="New passwords must match and be at least 8 characters.";return}localStorage.setItem(K.mod,await hash(n));$("oldModPass").value=$("newModPass").value=$("confirmModPass").value="";$("changePassMsg").textContent="Moderator password changed."}
+function publishPost(){const s=session();if(!s)return;const title=$("postTitle").value.trim(),content=$("postContent").value.trim();if(!title||!content){$("postMsg").textContent="Enter a title and content.";return}const posts=read(K.posts);posts.unshift({id:crypto.randomUUID(),title,content,author:s.name,time:new Date().toLocaleString()});write(K.posts,posts);$("postTitle").value=$("postContent").value="";$("postMsg").textContent="Post published.";refresh()}
+function toggleMember(id){if(session()?.role!=="Moderator")return;const users=read(K.users),u=users.find(x=>x.id===id);if(!u)return;u.active=!u.active;write(K.users,users);refresh()}
+function deletePost(id){if(session()?.role!=="Moderator")return;write(K.posts,read(K.posts).filter(p=>p.id!==id));refresh()}
+function postsHTML(posts,manage=false){if(!posts.length)return '<div class="empty">Nothing to show yet.</div>';return posts.map(p=>`<article class="post"><h3>${escapeHTML(p.title)}</h3><p>${escapeHTML(p.content)}</p><small>By ${escapeHTML(p.author)} • ${escapeHTML(p.time)}</small>${manage?`<div style="margin-top:12px"><button class="action danger" onclick="deletePost('${p.id}')">DELETE POST</button></div>`:""}</article>`).join("")}
+function refresh(){const users=read(K.users),logs=read(K.logs),posts=read(K.posts),s=session(),active=users.filter(u=>u.active).length;
+$("statMembers").textContent=users.length;$("statLogins").textContent=logs.length;$("statPosts").textContent=posts.length;$("statActive").textContent=active;
+$("profileInfo").innerHTML=`<h3>${escapeHTML(s.name)}</h3><p>Mobile: ${escapeHTML(s.phone||"Not shown")}</p><p>Role: ${escapeHTML(s.role)}</p>`;
+const rows=users.map(u=>`<tr><td>${escapeHTML(u.name)}</td><td>${escapeHTML(u.phone)}</td><td>${statusTag(u.active)}</td></tr>`).join("")||'<tr><td colspan="3">No members registered.</td></tr>';$("memberRows").innerHTML=rows;
+const logRows=logs.map(l=>`<tr><td>${escapeHTML(l.name)}</td><td>${escapeHTML(l.phone)}</td><td>${escapeHTML(l.time)}</td></tr>`).join("")||'<tr><td colspan="3">No login records.</td></tr>';$("activityRows").innerHTML=logRows;
+$("latestPosts").innerHTML=postsHTML(posts.slice(0,3));$("allPosts").innerHTML=postsHTML(posts);
+if(s?.role==="Moderator"){$("modMembers").textContent=users.length;$("modLogins").textContent=logs.length;$("modPostCount").textContent=posts.length;$("modActivity").innerHTML=logRows;$("manageMembers").innerHTML=users.map(u=>`<tr><td>${escapeHTML(u.name)}</td><td>${escapeHTML(u.phone)}</td><td>${statusTag(u.active)}</td><td><button class="action ${u.active?"danger":"good"}" onclick="toggleMember('${u.id}')">${u.active?"MAKE INACTIVE":"MAKE ACTIVE"}</button></td></tr>`).join("")||'<tr><td colspan="4">No members yet.</td></tr>';$("managePosts").innerHTML=postsHTML(posts,true)}}
+init();
+</script>
+</body>
+</html>
